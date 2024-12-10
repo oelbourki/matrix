@@ -171,15 +171,137 @@ def test_cross_product():
     assert result == Vector([17., -58., -16.]), f"Test 3 Failed: {result}"
 
     print("All tests passed!")
+def test_matrix_vector_operations():
+    # Test 1: Identity matrix with vector
+    u = Matrix([[1.0, 0.0], [0.0, 1.0]])
+    v = Vector([4.0, 2.0])
+    result = u.mul_vec(v)
+    assert result.data == [4.0, 2.0], f"Test 1 failed: {result}"
+
+    # Test 2: Scaling matrix with vector
+    u = Matrix([[2.0, 0.0], [0.0, 2.0]])
+    v = Vector([4.0, 2.0])
+    result = u.mul_vec(v)
+    assert result.data == [8.0, 4.0], f"Test 2 failed: {result}"
+
+    # Test 3: Transformation matrix with vector
+    u = Matrix([[2.0, -2.0], [-2.0, 2.0]])
+    v = Vector([4.0, 2.0])
+    result = u.mul_vec(v)
+    assert result.data == [4.0, -4.0], f"Test 3 failed: {result}"
+
+    print("Matrix-vector tests passed!")
+
+
+def test_matrix_matrix_operations():
+    # Test 1: Identity matrix with identity matrix
+    u = Matrix([[1.0, 0.0], [0.0, 1.0]])
+    v = Matrix([[1.0, 0.0], [0.0, 1.0]])
+    result = u.mul_mat(v)
+    assert result.data == [[1.0, 0.0], [0.0, 1.0]], f"Test 1 failed: {result}"
+
+    # Test 2: Identity matrix with another matrix
+    u = Matrix([[1.0, 0.0], [0.0, 1.0]])
+    v = Matrix([[2.0, 1.0], [4.0, 2.0]])
+    result = u.mul_mat(v)
+    assert result.data == [[2.0, 1.0], [4.0, 2.0]], f"Test 2 failed: {result}"
+
+    # Test 3: Arbitrary matrix with another matrix
+    u = Matrix([[3.0, -5.0], [6.0, 8.0]])
+    v = Matrix([[2.0, 1.0], [4.0, 2.0]])
+    result = u.mul_mat(v)
+    assert result.data == [[-14.0, -7.0], [44.0, 22.0]], f"Test 3 failed: {result}"
+
+    print("Matrix-matrix tests passed!")
+
+def test_matrix_trace():
+    # Test 1
+    u = Matrix([
+        [1.0, 0.0],
+        [0.0, 1.0],
+    ])
+    assert u.trace() == 2.0, f"Test 1 failed: {u.trace()}"
+
+    # Test 2
+    u = Matrix([
+        [2.0, -5.0, 0.0],
+        [4.0, 3.0, 7.0],
+        [-2.0, 3.0, 4.0],
+    ])
+    assert u.trace() == 9.0, f"Test 2 failed: {u.trace()}"
+
+    # Test 3
+    u = Matrix([
+        [-2.0, -8.0, 4.0],
+        [1.0, -23.0, 4.0],
+        [0.0, 6.0, 4.0],
+    ])
+    assert u.trace() == -21.0, f"Test 3 failed: {u.trace()}"
+
+    print("All tests passed!")
+
+def test_matrix_transpose():
+    # Test 1: 2x2 Identity Matrix
+    u = Matrix([
+        [1.0, 0.0],
+        [0.0, 1.0],
+    ])
+    u_transposed = u.transpose()
+    expected = Matrix([
+        [1.0, 0.0],
+        [0.0, 1.0],
+    ])
+    print(expected.data)
+    print(u_transposed.data)
+    
+    assert u_transposed == expected, f"Test 1 failed: {u_transposed.data}"
+
+    # Test 2: 2x3 Matrix
+    u = Matrix([
+        [1.0, 2.0, 3.0],
+        [4.0, 5.0, 6.0],
+    ])
+    u_transposed = u.transpose()
+    expected = Matrix([
+        [1.0, 4.0],
+        [2.0, 5.0],
+        [3.0, 6.0],
+    ])
+    assert u_transposed == expected, f"Test 2 failed: {u_transposed.data}"
+
+    # Test 3: 3x3 Matrix
+    u = Matrix([
+        [1.0, 2.0, 3.0],
+        [4.0, 5.0, 6.0],
+        [7.0, 8.0, 9.0],
+    ])
+    u_transposed = u.transpose()
+    expected = Matrix([
+        [1.0, 4.0, 7.0],
+        [2.0, 5.0, 8.0],
+        [3.0, 6.0, 9.0],
+    ])
+    assert u_transposed == expected, f"Test 3 failed: {u_transposed.data}"
+
+    print("All transpose tests passed!")
+
+
+
+
+if __name__ == "__main__":
 
 
 # Run the tests
 
-# test_vector_operations()
-# test_matrix_operations()
-# test_linear_combination()
-# test_lerp()
-# test_dot()
-# test_norms()
-# test_angle_cos()
-test_cross_product()
+    # test_vector_operations()
+    # test_matrix_operations()
+    # test_linear_combination()
+    # test_lerp()
+    # test_dot()
+    # test_norms()
+    # test_angle_cos()
+    # test_cross_product()
+    # test_matrix_vector_operations()
+    # test_matrix_matrix_operations()
+    # test_matrix_trace()
+    test_matrix_transpose()
