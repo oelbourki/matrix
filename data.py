@@ -61,6 +61,22 @@ class Vector:
     # def cos()
     def __str__(self):
         return f"Vector: {self.data}"
+    def cross(self, other):
+        # Ensure both vectors are 3-dimensional
+        if len(self.data) != 3 or len(other.data) != 3:
+            raise ValueError("Cross product is only defined for 3-dimensional vectors.")
+        
+        x1, y1, z1 = self.data
+        x2, y2, z2 = other.data
+        
+        # Calculate the cross product
+        return Vector([y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2])
+
+    def __eq__(self, other):
+        # Compare the values of the two vectors for equality
+        if not isinstance(other, Vector):
+            return False
+        return self.data == other.data
 
 
 class Matrix:

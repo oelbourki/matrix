@@ -1,20 +1,29 @@
 from data import Vector, Matrix
 
+def round_v(r):
+    if isinstance(r, list):
+        data = []
+        for x in r:
+            data.append(round(x, 1))
+        return data
+    else:
+        return round(r, 1)
 def lerp(u, v, t):
-    """
-    Linear interpolation between two objects of the same type.
-    
-    Args:
-    u (Vector or Matrix): The starting point.
-    v (Vector or Matrix): The ending point.
-    t (float): The interpolation factor (0 <= t <= 1).
-    
-    Returns:
-    Vector or Matrix: The interpolated object.
-    """
+
+    if isinstance(u, float) and isinstance(v, float):
+        return round(u * (1.0 - t) + v * t, 1)
+        # return a * (1.0 - f) + (b * f)
+
     if not (0 <= t <= 1):
         raise ValueError("t must be between 0 and 1.")
-    return u.scale(1 - t).add(v.scale(t))
+    result = u.scale(1 - t).add(v.scale(t))
+    # for i,r in enumerate(result.data):
+    #     for c in r
+    res = [round_v(r) for r in result.data]
+    # print(res)
+    result.data = res
+    # print(round(result.data))
+    return result
 
 
 # Testing the function
