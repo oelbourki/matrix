@@ -172,6 +172,74 @@ def test_cross_product():
 
     print("All tests passed!")
 
+def test_matrix_transpose():
+    # Test 1: 2x2 Identity Matrix
+    u = Matrix([
+        [1.0, 0.0],
+        [0.0, 1.0],
+    ])
+    u_transposed = u.transpose()
+    expected = Matrix([
+        [1.0, 0.0],
+        [0.0, 1.0],
+    ])
+    assert u_transposed == expected, f"Test 1 failed: {u_transposed.data}"
+
+    # Test 2: 2x3 Matrix
+    u = Matrix([
+        [1.0, 2.0, 3.0],
+        [4.0, 5.0, 6.0],
+    ])
+    u_transposed = u.transpose()
+    expected = Matrix([
+        [1.0, 4.0],
+        [2.0, 5.0],
+        [3.0, 6.0],
+    ])
+    assert u_transposed == expected, f"Test 2 failed: {u_transposed.data}"
+
+    # Test 3: 3x3 Matrix
+    u = Matrix([
+        [1.0, 2.0, 3.0],
+        [4.0, 5.0, 6.0],
+        [7.0, 8.0, 9.0],
+    ])
+    u_transposed = u.transpose()
+    expected = Matrix([
+        [1.0, 4.0, 7.0],
+        [2.0, 5.0, 8.0],
+        [3.0, 6.0, 9.0],
+    ])
+    assert u_transposed == expected, f"Test 3 failed: {u_transposed.data}"
+
+    print("All transpose tests passed!")
+
+def test_matrix_trace():
+    # Test 1
+    u = Matrix([
+        [1.0, 0.0],
+        [0.0, 1.0],
+    ])
+    assert u.trace() == 2.0, f"Test 1 failed: {u.trace()}"
+
+    # Test 2
+    u = Matrix([
+        [2.0, -5.0, 0.0],
+        [4.0, 3.0, 7.0],
+        [-2.0, 3.0, 4.0],
+    ])
+    assert u.trace() == 9.0, f"Test 2 failed: {u.trace()}"
+
+    # Test 3
+    u = Matrix([
+        [-2.0, -8.0, 4.0],
+        [1.0, -23.0, 4.0],
+        [0.0, 6.0, 4.0],
+    ])
+    assert u.trace() == -21.0, f"Test 3 failed: {u.trace()}"
+
+    print("All tests passed!")
+  
 
 # Run the tests
 
@@ -182,4 +250,6 @@ def test_cross_product():
 # test_dot()
 # test_norms()
 # test_angle_cos()
-test_cross_product()
+# test_cross_product()
+test_matrix_transpose()
+test_matrix_trace()
