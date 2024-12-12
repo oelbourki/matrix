@@ -127,13 +127,27 @@ class Matrix:
         result_data = [[sum(self.data[i][k] * other.data[k][j] for k in range(common_dim)) for j in range(cols)]
                        for i in range(rows)]
         return Matrix(result_data)
-
+    def mul_vec(self, other):
+        if isinstance(other, Vector):
+            tmp = Matrix([other.data])
+            # print("self:", self.shape())
+            # print("tmp:", tmp.shape())
+            result = tmp.multiply(self)
+            # print(result.data)
+            return Vector(result.data[0])
+    def mul_mat(self, other):
+        return self.multiply(other)
     def scale(self, scalar):
         rows, cols = self.shape()
         return Matrix([[self.data[i][j] * scalar for j in range(cols)] for i in range(rows)])
 
     def __str__(self):
         return "Matrix:\n" + "\n".join(["\t" + str(row) for row in self.data])
+    def __eq__(self, other):
+        # Compare the values of the two vectors for equality
+        if not isinstance(other, Matrix):
+            return False
+        return self.data == other.data
 
 
 # Testing the extended classes
