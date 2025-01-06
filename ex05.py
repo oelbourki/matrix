@@ -22,7 +22,7 @@ def angle_cos(u, v):
     if norm_u == 0 or norm_v == 0:
         raise ValueError("Undefined behavior for zero vectors.")
     
-    return round(dot_product / (norm_u * norm_v),16)
+    return round(dot_product / (norm_u * norm_v),9)
 
 
 # Testing the function

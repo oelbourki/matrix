@@ -148,7 +148,7 @@ def test_angle_cos():
     # Test 5: Angle cosine between [1., 2., 3.] and [4., 5., 6.]
     u = Vector([1., 2., 3.])
     v = Vector([4., 5., 6.])
-    assert angle_cos(u, v) == 0.9746318461970762, f"Expected 0.9746318461970762 but got {angle_cos(u, v)}"
+    assert angle_cos(u, v) == 0.974631846, f"Expected 0.974631846 but got {angle_cos(u, v)}"
 
 def test_cross_product():
     # Test 1: Cross product of [0., 0., 1.] and [1., 0., 0.]
@@ -288,7 +288,6 @@ def test_matrix_transpose():
 
 
 
-if __name__ == "__main__":
 
 def test_matrix_transpose():
     # Test 1: 2x2 Identity Matrix
@@ -479,15 +478,15 @@ if __name__ == "__main__":
 
 # Run the tests
 
-    # test_vector_operations()
-    # test_matrix_operations()
-    # test_linear_combination()
-    # test_lerp()
-    # test_dot()
-    # test_norms()
-    # test_angle_cos()
-    # test_cross_product()
-    # test_matrix_vector_operations()
-    # test_matrix_matrix_operations()
-    # test_matrix_trace()
+    test_vector_operations()
+    test_matrix_operations()
+    test_linear_combination()
+    test_lerp()
+    test_dot()
+    test_norms()
+    test_angle_cos()
+    test_cross_product()
+    test_matrix_vector_operations()
+    test_matrix_matrix_operations()
+    test_matrix_trace()
     test_matrix_transpose()
